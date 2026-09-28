@@ -1,0 +1,13 @@
+DBT_PROJECT:
+  outputs:
+    dev:
+      account: NJSBKJG-WF88284
+      database: AIRBNB
+      password: Sakshyam@9765498502
+      role: ACCOUNTADMIN
+      schema: dbt_schema
+      threads: 1
+      type: snowflake
+      user: SAKSHYAMBHANDARI20@GMAIL.COM
+      warehouse: DE_WH
+  target: dev
