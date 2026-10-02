@@ -1,4 +1,3 @@
-
 name: 'dbt_project'
 version: '1.0.0'
 
@@ -14,8 +13,6 @@ clean-targets:
   - "target"
   - "dbt_packages"
 
-
-
 models:
   dbt_project:
     staging:
@@ -24,4 +21,4 @@ models:
 
     marts:
       +schema: mart
-      +materialized: table 
+      +materialized: table

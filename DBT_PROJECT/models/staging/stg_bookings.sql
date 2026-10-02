@@ -13,10 +13,8 @@ cleaned_bookings AS (
         CAST(cleaning_fee AS NUMBER(10,2)) AS cleaning_fee,
         CAST(service_fee AS NUMBER(10,2)) AS service_fee,
         
-        -- 1. Applying the trim/upper macro to a valid string column
         {{ clean_string('booking_status') }} AS booking_status,
         
-        -- 2. Applying your multiplication macro
         {{ multiply_column('booking_amount', 'nights_booked', 'base_booking_cost') }},
         
         created_at

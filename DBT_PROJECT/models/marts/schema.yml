@@ -19,9 +19,8 @@ models:
         data_tests:
           - unique
           - not_null
-      # If you included dbt_scd_id in your SELECT statement, you can test it for uniqueness here!
 
-  - name: fct_bookings
+  - name: fact_bookings
     description: "Incremental fact table containing all booking events and revenue metrics."
     columns:
       - name: booking_id
@@ -33,10 +32,38 @@ models:
         data_tests:
           - not_null
           - relationships:
-              to: ref('dim_listings')
-              field: listing_id
+              arguments:
+                to: ref('dim_listings')
+                field: listing_id
               
       - name: booking_status
         data_tests:
           - accepted_values:
+              arguments:
+                values: ['CONFIRMED', 'CANCELLED']
+
+  - name: obt_bookings
+    description: "One Big Table combining bookings, listings, and historical host attributes for BI dashboards."
+    columns:
+      - name: booking_id
+        description: "The primary key for the booking transaction."
+        tests:
+          - unique
+          - not_null
+
+      - name: listing_id
+        description: "Foreign key to the listing."
+        tests:
+          - not_null
+
+      - name: booking_amount
+        description: "Total amount paid for the booking."
+        tests:
+          - not_null
+
+      - name: booking_status
+        description: "Current status of the booking."
+        tests:
+          - accepted_values:
+             arguments:
               values: ['CONFIRMED', 'CANCELLED']

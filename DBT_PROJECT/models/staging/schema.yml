@@ -11,6 +11,7 @@ models:
         data_tests:
           - not_null
           - relationships:
+             arguments:
               to: ref('stg_listings')
               field: listing_id
       - name: booking_status
@@ -36,6 +37,7 @@ models:
         data_tests:
           - not_null
           - relationships:
+             arguments:
               to: ref('stg_hosts')
               field: host_id
       - name: room_type

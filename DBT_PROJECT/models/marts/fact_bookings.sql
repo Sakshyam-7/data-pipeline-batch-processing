@@ -37,5 +37,4 @@ LEFT JOIN listings l
     ON b.listing_id = l.listing_id
 LEFT JOIN hosts h
     ON l.host_id = h.host_id
-    AND b.booking_date >= h.dbt_valid_from 
     AND (b.booking_date < h.dbt_valid_to OR h.dbt_valid_to IS NULL)
